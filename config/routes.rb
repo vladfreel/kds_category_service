@@ -1,6 +1,7 @@
 KdsCategoryService::Engine.routes.draw do
-  resources :orders do
-    get 'save_categories_for_account'
-    get 'fetch_categories_for_account'
+  root "home#index"
+  controller :home do
+    get :save_categories
+    get :fetch_categories
   end
 end
