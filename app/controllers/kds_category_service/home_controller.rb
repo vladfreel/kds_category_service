@@ -5,6 +5,8 @@ module KdsCategoryService
     def index
       redis = Redis.new(host: "localhost")
       @accounts = redis.hgetall('accounts')
+      @accounts.keys.find_all{|e| e.start_with?('account_uuid')}
+
     end
 
     def add_account_categories
@@ -14,7 +16,7 @@ module KdsCategoryService
                   'account_uuid:1', Time.now.to_i+1, 'name:1', 'Vasya',
                   'account_uuid:2', Time.now.to_i+2, 'name:2', 'Ivan')
     end
-    
+     
     def save_categories
       KdsCategoryService::SaveCategories.new(order_params).perform 
       redirect_to action: 'index'
