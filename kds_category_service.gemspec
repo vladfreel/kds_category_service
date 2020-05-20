@@ -29,7 +29,9 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "sqlite3"
 
-  spec.add_dependency "interactor", "~> 3.0"
+  spec.add_dependency "interactor"
+
+  spec.add_dependency "interactor-rails", "~> 2.0"
 
   spec.add_dependency "redis"
 
